@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const psicologoSchema = new mongoose.Schema({
+const usuarioSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true,
@@ -9,38 +9,35 @@ const psicologoSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-     crp:{
+     senha:{
         type: String,
         required: true,
     },
-     especialidade:{
-        type: [String],
+     dataNascimento:{
+        type: String,
         required: true,
-        default: []
     },
-     preco_sessao:{
-        type: Number,
+     pontosFidelidade:{
+        type: String,
         default: 0,
         required: true,
     },
-     bio:{
+     role:{
         type: String,
         Default: 'patient',
         required: true,
     },
      Status:{
         type: String,
-        Enum: ['pendente', 'suspenso'],
-        Default: 'pendente',
+        Enum: ['ativo', 'suspenso'],
+        Default: 'ativo',
         required: true,
     }   
 },
     {
-        timestamps: true
-    },
-    {
+        timestamps: true,
         versionKey: false
     }
 );
 
-const Psicologos = mongoose.model('Psicologos', psicologoSchema);
+export const Usuarios = mongoose.model('Usuarios', usuarioSchema);

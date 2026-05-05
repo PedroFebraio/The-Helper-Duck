@@ -1,6 +1,6 @@
-import mongoose, { version } from "mongoose";
+import mongoose from "mongoose";
 
-const usuarioSchema = new mongoose.Schema({
+const psicologoSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true,
@@ -9,37 +9,36 @@ const usuarioSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-     senha:{
+     crp:{
         type: String,
         required: true,
     },
-     dataNascimento:{
-        type: String,
+     especialidade:{
+        type: [String],
         required: true,
+        default: []
     },
-     pontosFidelidade:{
-        type: String,
+     preco_sessao:{
+        type: Number,
         default: 0,
         required: true,
     },
-     role:{
+     bio:{
         type: String,
         Default: 'patient',
         required: true,
     },
      Status:{
         type: String,
-        Enum: ['ativo', 'suspenso'],
-        Default: 'ativo',
+        Enum: ['pendente', 'suspenso'],
+        Default: 'pendente',
         required: true,
     }   
 },
     {
-        timestamps: true
-    },
-    {
+        timestamps: true,
         versionKey: false
     }
 );
 
-const Usuarios = mongoose.model('Usuarios', usuarioSchema);
+export const Psicologos = mongoose.model('Psicologos', psicologoSchema);
