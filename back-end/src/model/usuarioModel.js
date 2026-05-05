@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const usuarioSchema = new mongoose.Schema({
-    name:{
+    nome:{
         type: String,
         required: true,
     },
@@ -24,13 +24,13 @@ const usuarioSchema = new mongoose.Schema({
     },
      role:{
         type: String,
-        Default: 'patient',
+        default: 'patient',
         required: true,
     },
      Status:{
         type: String,
         Enum: ['ativo', 'suspenso'],
-        Default: 'ativo',
+        default: 'ativo',
         required: true,
     }   
 },
@@ -41,3 +41,22 @@ const usuarioSchema = new mongoose.Schema({
 );
 
 export const Usuarios = mongoose.model('Usuarios', usuarioSchema);
+
+export function criarUsuario(nome, email, senha, dataNascimento){
+
+
+    const user = Usuarios.create({
+        nome: nome,
+        email: email,
+        senha: senha,
+        dataNascimento: dataNascimento
+    })
+
+    return user
+}
+
+export function listarUsuario(){
+
+    const user = Usuarios.find();
+    return user
+}

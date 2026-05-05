@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const psicologoSchema = new mongoose.Schema({
-    name:{
+    nome:{
         type: String,
         required: true,
     },
