@@ -3,6 +3,8 @@ import { connectDB } from "./src/config/db.js"
 
 connectDB();
 
-app.listen(3000, ()=>{
-    console.log(`Servidor rodando em http://localhost:3000`);
+const PORT = 3000
+
+app.listen(PORT, ()=>{
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 })

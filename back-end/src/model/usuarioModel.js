@@ -13,11 +13,11 @@ const usuarioSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-     dataNascimento:{
-        type: String,
+     data_nascimento:{
+        type: Date,
         required: true,
     },
-     pontosFidelidade:{
+     pontos_fidelidade:{
         type: String,
         default: 0,
         required: true,
@@ -27,7 +27,7 @@ const usuarioSchema = new mongoose.Schema({
         default: 'patient',
         required: true,
     },
-     Status:{
+     status:{
         type: String,
         Enum: ['ativo', 'suspenso'],
         default: 'ativo',
@@ -42,14 +42,18 @@ const usuarioSchema = new mongoose.Schema({
 
 export const Usuarios = mongoose.model('Usuarios', usuarioSchema);
 
-export function criarUsuario(nome, email, senha, dataNascimento){
+export function criarUsuario(nome, email, senha, data_nascimento){
 
 
     const user = Usuarios.create({
-        nome: nome,
-        email: email,
-        senha: senha,
-        dataNascimento: dataNascimento
+        nome,
+        email,
+        senha,
+        data_nascimento,
+        pontos_fidelidade: 0,
+        role: 'patient',
+        status: 'ativo'
+
     })
 
     return user
