@@ -2,10 +2,10 @@ import { criarUsuario, listarUsuario } from "../model/usuarioModel.js";
 
 export async function CriarUser(req, res) {
     
-    const {nome, email, senha, dataNascimento} = req.body;
+    const {nome, email, senha, data_nascimento} = req.body;
 
     try {
-        const user = await criarUsuario (nome, email, senha, dataNascimento)
+        const user = await criarUsuario (nome, email, senha, data_nascimento)
     
         if(!user) res.status(400).json({message: "Informação não introduzida ou incorreta para criar"})
     
