@@ -40,4 +40,4 @@ const consultaSchema = new mongoose.Schema({
     versionKey: false
 });
 
-const Consultas = mongoose.model('Consultas', consultaSchema);
+export const Consultas = mongoose.model('Consultas', consultaSchema);
