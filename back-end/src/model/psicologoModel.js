@@ -42,3 +42,21 @@ const psicologoSchema = new mongoose.Schema({
 );
 
 export const Psicologos = mongoose.model('Psicologos', psicologoSchema);
+
+export function criarPsicologo(nome, email, crp, especialidade){
+
+    const psico = Psicologos.create({
+        nome,
+        email,
+        crp,
+        especialidade
+    })
+
+    return psico
+}
+
+export function listarPsicologo(){
+
+    const psico = Psicologos.find();
+    return psico
+}
