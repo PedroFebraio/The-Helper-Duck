@@ -7,4 +7,5 @@ app.use(express.json());
 
 app.use( usuarioRouter )
 app.use ( psicologoRouter );
+
 export default app

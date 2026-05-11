@@ -8,6 +8,7 @@ const usuarioSchema = new mongoose.Schema({
      email:{
         type: String,
         required: true,
+        unique: true
     },
      senha:{
         type: String,
@@ -18,14 +19,13 @@ const usuarioSchema = new mongoose.Schema({
         required: true,
     },
      pontos_fidelidade:{
-        type: String,
+        type: Number,
         default: 0,
         required: true,
     },
      role:{
         type: String,
-        default: 'patient',
-        required: true,
+        default: 'usuario',
     },
      status:{
         type: String,
@@ -49,10 +49,7 @@ export function criarUsuario(nome, email, senha, data_nascimento){
         nome,
         email,
         senha,
-        data_nascimento,
-        pontos_fidelidade: 0,
-        role: 'patient',
-        status: 'ativo'
+        data_nascimento
 
     })
 
@@ -62,5 +59,31 @@ export function criarUsuario(nome, email, senha, data_nascimento){
 export function listarUsuario(){
 
     const user = Usuarios.find();
+    return user
+}
+
+export function buscarUsuario(id){
+
+    const user = Usuarios.findById(id);
+    return user;
+}
+
+export function deletarUsuario(id){
+    const user = Usuarios.findByIdAndDelete(id);
+    return user;
+
+}
+
+export function atualizarUsuario(id, dados){
+
+    const user = Usuarios.findByIdAndUpdate(
+        id, 
+        dados,
+        {
+            new: true,
+            runValidators: true
+        }
+    )
+
     return user
 }

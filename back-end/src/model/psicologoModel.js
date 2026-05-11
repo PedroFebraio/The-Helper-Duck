@@ -8,6 +8,7 @@ const psicologoSchema = new mongoose.Schema({
      email:{
         type: String,
         required: true,
+        unique: true
     },
      crp:{
         type: String,
@@ -20,19 +21,20 @@ const psicologoSchema = new mongoose.Schema({
     },
      preco_sessao:{
         type: Number,
-        default: 0,
         required: true,
     },
      bio:{
-        type: String,
-        Default: 'patient',
-        required: true,
+        type: String
     },
      Status:{
         type: String,
         Enum: ['pendente', 'suspenso'],
         Default: 'pendente',
         required: true,
+    },
+    role:{
+        type: String,
+        default: 'psicologo'
     }   
 },
     {
